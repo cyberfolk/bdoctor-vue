@@ -1,0 +1,12 @@
+@use "./variables" as *;
+
+.ms-center-hv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ms-img-fit {
+  height: 100%;
+  object-fit: cover;
+}

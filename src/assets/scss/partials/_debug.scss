@@ -1,0 +1,49 @@
+/**
+ * debug.css
+ * 
+ * Toggle the "debug" class from the html body to use this file
+ * Use to show colored blocks and dashed borders
+ * Usually used in debugging fase or structuring fase
+ */
+
+.debug * {
+  border: 1px dashed red;
+}
+
+/* #region Grid .............................. */
+.debug .container {
+  background-color: green;
+}
+
+.debug .row {
+  background-color: yellow;
+}
+
+.debug [class^="col_"] {
+  background-color: aqua;
+}
+
+/* #endregion Grid ........................... */
+/* #endregion Common ......................... */
+
+.debug div {
+  padding: 1rem;
+}
+
+.debug header {
+  padding: 1rem;
+}
+
+.debug main {
+  padding: 1rem;
+}
+
+.debug section {
+  padding: 1rem;
+}
+
+.debug footer {
+  padding: 1rem;
+}
+
+/* #endregion Common ......................... */

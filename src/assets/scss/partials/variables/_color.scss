@@ -1,0 +1,67 @@
+/**---------------------------------
+ * MY PERSONAL Palette              
+ * ---------------------------------
+ * $darkless:  # ; 
+ * $lightless: # ; 
+ * $lighter:   # ; 
+ * $accenture: # ; 
+ */
+
+/** --------------------------------- 
+ * TO OVERRIDE Bootstrap             
+ * --------------------------------- 
+ * $dark:      # ; 
+ * $light:     # ; 
+ * $primary:   # ; 
+ * $secondary: # ; 
+ * $muted:     # ; 
+ */
+
+/**--------------------------------- 
+ * BOOTSTAP Palette                  
+ * --------------------------------- 
+ * To create utility-classes 
+ * enter here its relative color 
+ */
+$theme-colors: (
+    /* UNMODIFIED */
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "primary": $primary,
+    "light": $light,
+    "dark": $dark,
+
+    /* OVERRIDDEN */
+    /* ... */
+
+    /* ADDED BY ME */
+    /* ... */
+
+);
+
+
+/**--------------------------------- 
+ * BOOTSTAP Color variable                  
+ * --------------------------------- 
+ * They alredy exist and I can use them,
+ * I just reported them. 
+ */
+$colors: (
+    "blue": $blue,
+    "indigo": $indigo,
+    "purple": $purple,
+    "pink": $pink,
+    "red": $red,
+    "orange": $orange,
+    "yellow": $yellow,
+    "green": $green,
+    "teal": $teal,
+    "cyan": $cyan,
+    "black": $black,
+    "white": $white,
+    "gray": $gray-600,
+    "gray-dark": $gray-800
+);

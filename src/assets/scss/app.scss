@@ -1,0 +1,7 @@
+// Import all of Bootstrap's CSS
+@use "./partials/variables" as *;
+@use "./partials/common";
+@use "./partials/debug";
+@use "./partials/utilities";
+
+@import "bootstrap/scss/bootstrap";
