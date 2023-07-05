@@ -25,7 +25,7 @@ export default {
             <option disabled selected>Select one</option>
             <option v-for="spec in state.specializations" :value='spec.id'>{{ spec.name }}</option>
           </select>
-          <button type="submit" class="input-group-text" @onclick="state.getDoctorBySpec()">Submit</button>
+          <button class="input-group-text" @click="state.getDoctorBySpec()">Submit</button>
         </div>
         <!-- <div class="my-3"><small class="text-danger">{{ $message }}</small></div> -->
 <!--       </form> -->
@@ -64,6 +64,16 @@ export default {
       <!--  @else
       <div>Nessun risultato</div>
       @endif -->
+
+      <div v-if="state.doctors_by_spec != 0">
+        <ul v-for="doc, index in state.doctors_by_spec">
+          <li>
+              <div class="row">
+                <h2>{{ state.users_by_spec[index].name }} {{ state.users_by_spec[index].lastname }}</h2>
+              </div>
+          </li>
+        </ul>
+      </div>
 
     </div>
     <!-- /.container -->

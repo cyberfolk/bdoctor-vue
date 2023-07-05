@@ -32,8 +32,10 @@ export const state = reactive({
         axios
             .get(url)
             .then(response => {
-                this.doctors_by_spec = response.data
+                this.doctors_by_spec = response.data.result;
+                this.users_by_spec = response.data.users;
                 console.log(this.doctors_by_spec, this.users_by_spec);
+                this.loading_specializations = false;
             })
     }
 });
