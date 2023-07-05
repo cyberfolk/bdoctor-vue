@@ -18,17 +18,17 @@ export default {
     <div class="container">
       <h3 class="mb-3 mt-5">Che specialista desideri?</h3>
 
-      <form action="{{ route('form-specialization') }}" method="post">
+<!--       <form action="{{ route('form-specialization') }}" method="post"> -->
         <div class="input-group mb-3">
-          <select required class="form-select form-select-lg" name="specializations" id="specializations">
+          <select required class="form-select form-select-lg" v-model="state.specialization_selected"
+            name="specializations" id="specializations">
             <option disabled selected>Select one</option>
-            <option v-for="spec in state.specializations" value="{{ spec.id }}">{{ spec.name }}</option>
+            <option v-for="spec in state.specializations" :value='spec.id'>{{ spec.name }}</option>
           </select>
-          <button type="submit" class="input-group-text">Submit</button>
+          <button type="submit" class="input-group-text" @onclick="state.getDoctorBySpec()">Submit</button>
         </div>
-
         <!-- <div class="my-3"><small class="text-danger">{{ $message }}</small></div> -->
-      </form>
+<!--       </form> -->
 
       <!--       @if (isset($doctors) && !empty($doctors))
       <div class="row">
