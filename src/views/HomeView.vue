@@ -1,10 +1,12 @@
 <script>
+import SearchSpecializations from '../components/item/SearchSpecializations.vue';
 export default {
     name: "HomeView",
-    components: {},
+    components: {
+        SearchSpecializations,
+    },
     data() {
         return {
-            slugs: ['andrea1', 'daniele2', 'martina3', 'riccardo4', 'nicola5']
         };
     },
 };
@@ -15,12 +17,12 @@ export default {
         <div class="container text-center">
             <h1 class="text-center align-middle py-5">HomeView</h1>
             <router-link :to="{ 'name': 'home' }" class="d-block">&LeftArrow; Go back to home</router-link>
-
-            <div class="py-5 d-flex gap-3 justify-content-center">
+            <SearchSpecializations></SearchSpecializations>
+           <!--  <div class="py-5 d-flex gap-3 justify-content-center">
                 <div v-for="slug in slugs" class="">
                     <router-link :to="{ name: 'doctor', params: { slug: slug } }" class="btn btn-primary">Info Doctor: {{ slug }}</router-link>
                 </div>
-            </div>
+            </div> -->
             <!-- /.d-flex -->
 
         </div>
