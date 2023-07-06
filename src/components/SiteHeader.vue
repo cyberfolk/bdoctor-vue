@@ -12,17 +12,23 @@ export default {
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-              @click="visible = !visible">
+        @click="visible = !visible">
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- navbar-toggler -->
 
       <div class="ps-4 navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav">
-          <li class="nav-item" style="width: 130px">
+          <li class="nav-item">
+            <router-link class="nav-link text-white" active-class="active" :to="{ 'name': 'home' }">Home</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link text-white" active-class="active" :to="{ 'name': 'search' }"> Search</router-link>
+          </li>
+          <li class="nav-item">
             <a class="nav-link text-white" href="http://127.0.0.1:8000/register">Register</a>
           </li>
-          <li class="nav-item" style="width: 85px">
+          <li class="nav-item">
             <a class="nav-link text-white" href="http://127.0.0.1:8000/login">Login</a>
           </li>
         </ul>

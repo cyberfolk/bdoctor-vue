@@ -1,7 +1,7 @@
 <script>
 import { state } from "./../../state";
 export default {
-    name: "ProjectItem",
+    name: "CardDoctor",
     data() { return { state, }; },
     props: {
         title: String,
@@ -36,37 +36,4 @@ export default {
 
 <style lang="scss" scoped>
 @use '../../assets/scss/partials/variables' as *;
-
-.card {
-    aspect-ratio: 1.33;
-
-    .card-img {
-        transition: filter 1s;
-    }
-
-    .info {
-        visibility: hidden;
-        opacity: 0;
-        transition: visibility 1s, opacity 1s;
-    }
-
-    .technology {
-        transition: width 1s;
-        display: inline; //otherwise badges with no content set their content as display none
-    }
-
-    &:hover .card-img {
-        filter: brightness(0.6);
-        transition: filter 1s;
-    }
-
-    &:hover .info {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    &:hover .technology {
-        width: 40px;
-    }
-}
 </style>

@@ -13,8 +13,8 @@ export default {
 
 <template>
     <SiteHeader></SiteHeader>
-    <SiteMain></SiteMain>
-    <!-- <router-view></router-view> -->
+    <!-- <SiteMain></SiteMain> -->
+    <router-view></router-view>
     <SiteFooter></SiteFooter>
 </template>
 
