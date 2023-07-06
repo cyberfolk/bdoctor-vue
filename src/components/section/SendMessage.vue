@@ -59,7 +59,7 @@ export default {
 <template>
     <section id="send_message">
 
-        <h4>Invia una recensione</h4>
+        <h4>Invia un Messaggio</h4>
         <div v-if="success" class="alert alert-success text-start" role="alert">
             Messaggio inviato con successo!
         </div>
