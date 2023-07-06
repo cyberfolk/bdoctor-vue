@@ -7,14 +7,47 @@ export default {
     data() {
         return {
             state,
-            name: '',
+            doctor_id: 1,
+            name_patient: '',
             email: '',
-            message: '',
+            text: '',
             loading: false,
             success: false,
             errors: {}
         }
     },
+    methods: {
+        sendForm() {
+            this.loading = true;
+            const data = {
+                name_patient: this.name_patient,
+                text: this.text,
+                doctor_id: this.doctor_id,
+            };
+            // pulisco l'array con i messaggi
+            this.errors = {};
+
+            // Importante - Stiamo comunicando con Laravel, quindi non è più obbligatorio inserire gli headers con il Content-Type
+            // come abbiamo fatto invece quando comunicavamo direttamente con gli script PHP
+            console.log(data);
+
+            axios
+                .post(`${this.state.API_URL_BASE}api/review`, data).then((response) => {
+                    console.log(data);
+                    console.log(`${this.state.API_URL_BASE}api/review`);
+                    this.success = response.data.success;
+                    if (!this.success) {
+                        this.errors = response.data.errors;
+                    } else {
+                        // ripulisco i campi di input
+                        this.name_patient = '';
+                        this.text = '';
+                    }
+                    this.loading = false;
+                });
+        },
+    }
+
 };
 </script>
 
@@ -49,16 +82,6 @@ export default {
                         <p v-for="(error, index) in errors.text" :key="`message-error-${index}`" class="invalid-feedback"> {{ error }} </p>
                     </div>
                     <!-- text -->
-
-                    <div class="mb-5">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="text"
-                            name="email" id="email" v-model="email"
-                            class="form-control" :class="{ 'is-invalid': errors.email }"
-                            placeholder="Type your email here" />
-                        <p v-for="(error, index) in errors.email" :key="`message-error-${index}`" class="invalid-feedback"> {{ error }} </p>
-                    </div>
-                    <!-- email -->
 
                     <button class="btn btn-primary py-2 px-5 me-4 fs-4" type="submit" :disabled="loading">{{ loading ? 'Sending...' : 'Send' }} </button>
                     <button class="btn btn-danger py-2 px-5 fs-4" type="reset" :disabled="loading">{{ loading ? 'Sending...' : 'Reset' }} </button>
