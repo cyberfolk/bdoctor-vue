@@ -18,9 +18,14 @@ export const state = reactive({
         axios
             .get(url)
             .then(response => {
-                this.specializations = response.data.specializations;
-                console.log(this.specializations);
-                this.loading_specializations = false;
+                if (response.data.success) {
+                    this.specializations = response.data.specializations;
+                    console.log(this.specializations);
+                    this.loading_specializations = false;
+                } else {
+                    this.doctors_by_spec = []
+                    this.users_by_spec = []
+                }
             })
             .catch(error => {
                 this.error = error.message
@@ -32,10 +37,18 @@ export const state = reactive({
         axios
             .get(url)
             .then(response => {
-                this.doctors_by_spec = response.data.result;
-                this.users_by_spec = response.data.users;
-                console.log(this.doctors_by_spec, this.users_by_spec);
-                this.loading_specializations = false;
+                if (response.data.success) {
+                    this.doctors_by_spec = response.data.result;
+                    this.users_by_spec = response.data.users;
+                    console.log(this.doctors_by_spec, this.users_by_spec);
+                    this.loading_specializations = false;
+                } else {
+                    this.doctors_by_spec = []
+                    this.users_by_spec = []
+                }
             })
-    }
+    },
+    getImagePath(path) {
+        return this.API_URL_BASE + 'storage/' + path
+    },
 });
