@@ -11,24 +11,19 @@ export default {
         <img height="80" src="./../assets/image/bdoctor.png" alt="Personal Logo" class="">
       </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" @click="visible = !visible">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              @click="visible = !visible">
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- navbar-toggler -->
 
       <div class="ps-4 navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav">
-          <li class="nav-item" style="width: 80px">
-            <router-link class="nav-link text-white" active-class="active" :to="{ 'name': 'home' }" aria-current="page">Home</router-link>
-          </li>
-          <li class="nav-item" style="width: 135px">
-            <router-link class="nav-link text-white" active-class="active" :to="{ 'name': 'contacts' }">Contacts</router-link>
-          </li>
           <li class="nav-item" style="width: 130px">
-            <router-link class="nav-link text-white" active-class="active" :to="{ 'name': 'projects' }">Projects</router-link>
+            <a class="nav-link text-white" href="http://127.0.0.1:8000/register">Register</a>
           </li>
           <li class="nav-item" style="width: 85px">
-            <router-link class="nav-link text-white" active-class="active" :to="{ 'name': 'about' }">About</router-link>
+            <a class="nav-link text-white" href="http://127.0.0.1:8000/login">Login</a>
           </li>
         </ul>
       </div>
