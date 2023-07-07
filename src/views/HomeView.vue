@@ -1,7 +1,10 @@
 <script>
+import SearchSpecializations from '../components/item/SearchSpecializations.vue';
 export default {
     name: "HomeView",
-    components: {},
+    components: {
+        SearchSpecializations,
+    },
     data() {
         return {
             slugs: ['andrea1', 'daniele2', 'martina3', 'riccardo4', 'nicola5']
@@ -18,7 +21,8 @@ export default {
 
             <div class="py-5 d-flex gap-3 justify-content-center">
                 <div v-for="slug in slugs" class="">
-                    <router-link :to="{ name: 'doctor', params: { slug: slug } }" class="btn btn-primary">Info Doctor: {{ slug }}</router-link>
+                    <router-link :to="{ name: 'doctor', params: { slug: slug } }" class="btn btn-primary">Info Doctor: {{
+                        slug }}</router-link>
                 </div>
             </div>
             <!-- /.d-flex -->
@@ -26,6 +30,8 @@ export default {
         </div>
         <!-- /.container -->
     </section>
+    <!-- section search -->
+    <SearchSpecializations></SearchSpecializations>
     <!-- /#HomeView -->
 </template>
 
