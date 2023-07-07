@@ -8,46 +8,53 @@ export const state = reactive({
     API_URL_BASE: "http://127.0.0.1:8000/",
     API_SPECIALIZATIONS: "api/specializations",
     API_DOCTOR_BY_SPEC: "api/doctor_by_spec",
+    API_MESSAGE: "api/message",
+    API_REVIEW: "api/review",
+    API_VOTE: "api/vote",
     specializations: [],
     doctors_by_spec: [],
     users_by_spec: [],
-    specialization_selected: null,
+    specialization_selected: '',
 
     fetchSpecializations() {
+        this.loading_specializations = true;
         const url = this.API_URL_BASE + this.API_SPECIALIZATIONS;
         axios
             .get(url)
             .then(response => {
                 if (response.data.success) {
                     this.specializations = response.data.specializations;
-                    console.log(this.specializations);
-                    this.loading_specializations = false;
                 } else {
-                    this.doctors_by_spec = []
-                    this.users_by_spec = []
+                    this.specializations = []
                 }
+                this.loading_specializations = false;
             })
             .catch(error => {
                 this.error = error.message
             })
     },
+
     getDoctorBySpec() {
+        this.loading_doctors_by_spec = true;
         const url = this.API_URL_BASE + this.API_DOCTOR_BY_SPEC + '/' + this.specialization_selected;
-        console.log(url);
         axios
             .get(url)
             .then(response => {
                 if (response.data.success) {
                     this.doctors_by_spec = response.data.result;
                     this.users_by_spec = response.data.users;
-                    console.log(this.doctors_by_spec, this.users_by_spec);
                     this.loading_specializations = false;
                 } else {
                     this.doctors_by_spec = []
                     this.users_by_spec = []
                 }
+                this.loading_doctors_by_spec = false;
+            })
+            .catch(error => {
+                this.error = error.message
             })
     },
+
     getImagePath(path) {
         return this.API_URL_BASE + 'storage/' + path
     },
