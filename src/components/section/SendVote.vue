@@ -22,6 +22,7 @@ export default {
             this.errors = {}; // pulisco l'array con i messaggi d'errore
             const data = {
                 vote: this.vote,
+                doctor_id: this.doctor_id,
             };
 
             axios
