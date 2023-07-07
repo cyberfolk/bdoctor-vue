@@ -11,7 +11,7 @@ export default {
             email_patient: '',
             text: '',
             loading: false,
-            success: false,
+            alert: false,
             errors: {}
         }
     },
@@ -21,38 +21,29 @@ export default {
     methods: {
         sendForm() {
             this.loading = true;
+            this.errors = {}; // pulisco l'array con i messaggi d'errore
             const data = {
                 name_patient: this.name_patient,
                 email_patient: this.email_patient,
                 text: this.text,
                 doctor_id: this.doctor_id,
             };
-            // pulisco l'array con i messaggi
-            this.errors = {};
-
-            // Importante - Stiamo comunicando con Laravel, quindi non è più obbligatorio inserire gli headers con il Content-Type
-            // come abbiamo fatto invece quando comunicavamo direttamente con gli script PHP
-            console.log(data);
 
             axios
-                .post(`${this.state.API_URL_BASE}api/message`, data).then((response) => {
-                    console.log(data);
-                    console.log(`${this.state.API_URL_BASE}api/message`);
-                    this.success = response.data.success;
-                    if (!this.success) {
+                .post(state.API_URL_BASE + state.API_MESSAGE, data)
+                .then((response) => {
+                    if (!response.data.success) {
                         this.errors = response.data.errors;
                     } else {
-                        // ripulisco i campi di input
                         this.name_patient = '';
                         this.email_patient = '';
                         this.text = '';
+                        this.alert = true;
                     }
                     this.loading = false;
                 });
         },
     }
-
-
 };
 </script>
 
@@ -60,7 +51,7 @@ export default {
     <section id="send_message">
 
         <h4>Invia un Messaggio</h4>
-        <div v-if="success" class="alert alert-success text-start" role="alert">
+        <div v-if="alert" class="alert alert-success text-start" role="alert">
             Messaggio inviato con successo!
         </div>
         <form @submit.prevent="sendForm()" class="mb-5 py-3">
@@ -98,7 +89,6 @@ export default {
             <!-- buttons -->
 
         </form>
-
     </section>
     <!-- /#send_message -->
 </template>

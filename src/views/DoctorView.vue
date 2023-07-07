@@ -1,9 +1,10 @@
 <script>
 import SendReview from '../components/section/SendReview.vue';
 import SendMessage from '../components/section/SendMessage.vue';
+import SendVote from '../components/section/SendVote.vue';
 export default {
     name: "DoctorView",
-    components: { SendReview, SendMessage },
+    components: { SendReview, SendMessage, SendVote },
     data() {
         return {
             doctor_id: 1,
@@ -28,7 +29,7 @@ export default {
                 </div>
                 <!-- /.col -->
                 <div class="col">
-                    <SendReview :doctor_id="doctor_id"></SendReview>
+                    <SendVote :doctor_id="doctor_id"></SendVote>
                 </div>
                 <!-- /.col -->
             </div>
