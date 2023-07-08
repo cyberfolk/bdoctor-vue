@@ -7,7 +7,7 @@ export const state = reactive({
     loading_doctors_by_spec: true,
     API_URL_BASE: "http://127.0.0.1:8000/",
     API_SPECIALIZATIONS: "api/specializations",
-    API_DOCTOR_BY_SPEC: "api/doctor_by_spec",
+    API_DOCTOR_BY_SPEC: "api/doctors_by_spec",
     API_MESSAGE: "api/message",
     API_REVIEW: "api/review",
     API_VOTE: "api/vote",
