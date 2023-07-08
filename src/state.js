@@ -13,8 +13,8 @@ export const state = reactive({
     API_VOTE: "api/vote",
     specializations: [],
     doctors_by_spec: [],
-    users_by_spec: [],
     specialization_selected: '',
+    minVote: 1,
 
     fetchSpecializations() {
         this.loading_specializations = true;
@@ -42,11 +42,9 @@ export const state = reactive({
             .then(response => {
                 if (response.data.success) {
                     this.doctors_by_spec = response.data.result;
-                    this.users_by_spec = response.data.users;
                     this.loading_specializations = false;
                 } else {
                     this.doctors_by_spec = []
-                    this.users_by_spec = []
                 }
                 this.loading_doctors_by_spec = false;
             })
