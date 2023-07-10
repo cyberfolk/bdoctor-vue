@@ -19,11 +19,9 @@ export default {
             axios
                 .get(url)
                 .then(response => {
-                    console.log(response);
                     if (response.data.success) {
-                        this.doctor = response.data.result
+                        this.doctor = response.data.result[0];
                         console.log(this.doctor);
-
                     } else {
                         this.$router.push({
                             name: 'not-found'
@@ -38,8 +36,7 @@ export default {
     },
     mounted() {
         const url = state.API_URL_BASE + 'api/doctors/' + this.$route.params.slug;
-        // getDoctorInfo(url);
-        console.log(this.getDoctorInfo(url));
+        this.getDoctorInfo(url);
     },
 };
 </script>

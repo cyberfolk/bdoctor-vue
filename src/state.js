@@ -7,14 +7,15 @@ export const state = reactive({
     loading_doctors_by_spec: true,
     API_URL_BASE: "http://127.0.0.1:8000/",
     API_SPECIALIZATIONS: "api/specializations",
-    API_DOCTOR_BY_SPEC: "api/doctor_by_spec",
+    API_DOCTOR_BY_SPEC: "api/doctors_by_spec",
     API_MESSAGE: "api/message",
     API_REVIEW: "api/review",
     API_VOTE: "api/vote",
+    API_DOCTORS: "api/doctors",
     specializations: [],
     doctors_by_spec: [],
-    users_by_spec: [],
     specialization_selected: '',
+    minVote: 1,
 
     fetchSpecializations() {
         this.loading_specializations = true;
@@ -42,11 +43,9 @@ export const state = reactive({
             .then(response => {
                 if (response.data.success) {
                     this.doctors_by_spec = response.data.result;
-                    this.users_by_spec = response.data.users;
                     this.loading_specializations = false;
                 } else {
                     this.doctors_by_spec = []
-                    this.users_by_spec = []
                 }
                 this.loading_doctors_by_spec = false;
             })
