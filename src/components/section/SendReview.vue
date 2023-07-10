@@ -62,7 +62,7 @@ export default {
             </div>
             <!-- name_patient -->
 
-            <div class="mb-3">
+            <div class="mb-1">
                 <textarea required rows="5"
                     name="text" id="text" v-model="text"
                     class="form-control" :class="{ 'is-invalid': errors.text }"
@@ -70,6 +70,8 @@ export default {
                 <p v-for="(error, index) in errors.text" :key="`message-error-${index}`" class="invalid-feedback"> {{ error }} </p>
             </div>
             <!-- text -->
+
+            <div class="mb-3"><small class="text-danger">Non ti invia la recensione? Prova a ricaricare la pagina.</small></div>
 
             <div class="d-flex justify-content-end">
                 <button class="btn btn-primary py-2 px-3 me-3" type="submit" :disabled="loading">{{ loading ? 'Sending...' : 'Send' }} </button>
