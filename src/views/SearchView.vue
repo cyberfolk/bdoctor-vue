@@ -21,7 +21,7 @@ export default {
         </div>
         <div v-if="state.doctors_by_spec != 0" class="container">
             <SearchSpecializations></SearchSpecializations>
-            <small>ordina per:</small>
+            <!--<small>ordina per:</small>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1"> Numero recensioni </label>
@@ -29,18 +29,16 @@ export default {
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
                 <label class="form-check-label" for="flexRadioDefault2"> Voti maggiori </label>
-            </div>
+            </div> -->
             <div class="input-group mb-3">
-                <button class="input-group-text text-decoration-none">Voto minimo:
-                </button>
+                <div class="input-group-text text-decoration-none">Voto minimo: </div>
                 <select required class="form-select form-select-lg" v-model="state.minVote">
                     <option v-for="index in 5" :value='index'>{{ index }}</option>
                 </select>
             </div>
 
+            <!-- <p class="text-center">Sono stati trovati {{ state.doctors_by_spec.length }} risultati</p> -->
 
-
-            <p class="text-center">Sono stati trovati {{ state.doctors_by_spec.length }} risultati</p>
             <div class="row">
                 <div class="col-4 g-3" v-for="doc in state.doctors_by_spec" v-show="doc.avgVote >= state.minVote">
                     <div>

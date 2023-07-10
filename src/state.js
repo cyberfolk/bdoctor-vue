@@ -11,6 +11,7 @@ export const state = reactive({
     API_MESSAGE: "api/message",
     API_REVIEW: "api/review",
     API_VOTE: "api/vote",
+    API_DOCTORS: "api/doctors",
     specializations: [],
     doctors_by_spec: [],
     specialization_selected: '',

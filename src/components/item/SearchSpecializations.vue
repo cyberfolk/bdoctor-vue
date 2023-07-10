@@ -17,7 +17,7 @@ export default {
 };
 </script>
 <template>
-    <div class="container">
+    <div class="container p-0">
         <h3 class="mb-3 mt-5">Che specialista desideri?</h3>
 
         <!--       <form action="{{ route('form-specialization') }}" method="post"> -->

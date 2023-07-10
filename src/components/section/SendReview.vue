@@ -8,6 +8,7 @@ export default {
         return {
             state,
             name_patient: '',
+
             text: '',
             loading: false,
             alert: false,
@@ -26,6 +27,7 @@ export default {
                 text: this.text,
                 doctor_id: this.doctor_id,
             };
+            console.log(data);
 
             axios
                 .post(state.API_URL_BASE + state.API_REVIEW, data)
