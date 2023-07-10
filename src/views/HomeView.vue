@@ -1,9 +1,11 @@
 <script>
 import SearchSpecializations from '../components/item/SearchSpecializations.vue';
+import SliderDoctor from "../components/item/SliderDoctor.vue";
 export default {
     name: "HomeView",
     components: {
         SearchSpecializations,
+        SliderDoctor
     },
     data() {
         return {
@@ -17,6 +19,8 @@ export default {
     <section id="HomeView">
         <div class="container text-center">
             <h1 class="text-center align-middle py-5">HomeView</h1>
+
+            <SliderDoctor></SliderDoctor>
 
             <!--<div class="pb-5 d-flex gap-3 justify-content-center">
                 <div v-for="slug in slugs" class="">
