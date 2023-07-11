@@ -62,4 +62,23 @@ export const state = reactive({
     getImagePath(path) {
         return this.API_URL_BASE + 'storage/' + path
     },
+
+    getAllDoctor_User() {
+        const url = this.API_URL_BASE + this.API_DOCTORS
+        axios
+            .get(url)
+            .then(response => {
+                console.log(response);
+                if (response.data.success) {
+                    this.doctors = response.data;
+                    console.log(this.doctors);
+                } else {
+                    this.doctors = []
+                }
+
+            })
+            .catch(error => {
+                this.error = error.message
+            })
+    },
 });

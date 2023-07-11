@@ -22,8 +22,10 @@ export default {
         <div v-if="state.doctors_by_spec != 0" class="container">
             <SearchSpecializations></SearchSpecializations>
             <!--<small>ordina per:</small>
+            <!--<small>ordina per:</small>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1"> Numero recensioni </label>
                 <label class="form-check-label" for="flexRadioDefault1"> Numero recensioni </label>
             </div>
             <div class="form-check">
@@ -47,6 +49,7 @@ export default {
             <!-- countReviews -->
 
             <!-- <p class="text-center">Sono stati trovati {{ state.doctors_by_spec.length }} risultati</p> -->
+            <!-- <p class="text-center">Sono stati trovati {{ state.doctors_by_spec.length }} risultati</p> -->
 
             <div class="row">
                 <div class="col-4 g-3" v-for="doc in state.doctors_by_spec">
@@ -66,6 +69,7 @@ export default {
                                 <ul v-if="doc.specializations">
                                     <li v-for="spec in doc.specializations">{{ spec.name }}</li>
                                 </ul>
+                                <div v-else>Nessuna specializzazione</div>
                                 <div v-else>Nessuna specializzazione</div>
                             </div>
                         </div>
