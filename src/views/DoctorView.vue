@@ -21,7 +21,6 @@ export default {
                 .then(response => {
                     if (response.data.success) {
                         this.doctor = response.data.result[0];
-                        console.log(this.doctor);
                     } else {
                         this.$router.push({
                             name: 'not-found'
@@ -36,6 +35,7 @@ export default {
     },
     mounted() {
         const url = state.API_URL_BASE + 'api/doctors/' + this.$route.params.slug;
+        console.log(url);
         this.getDoctorInfo(url);
     },
 };
@@ -44,8 +44,29 @@ export default {
 <template>
     <section id="DoctorView">
         <div class="container">
-            <h1 class="text-center align-middle pt-5">DoctorView</h1>
-            <router-link :to="{ 'name': 'home' }" class="text-center d-block">&LeftArrow; Go back to home</router-link>
+            <div v-if="doctor" class="doc_info">
+                <h1 class="text-center align-middle pt-5">{{ doctor.name }} {{ doctor.lastname }}</h1>
+                <div class="row">
+                    <div class="col-4">
+                        <img v-if="doctor.photo != null" :src="state.getImagePath(doctor.photo)" class="card-img-top"
+                            alt="...">
+                        <img v-else src="./../assets//image/bdoctor.png" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col-8">
+                        <div class="mb-2 badge bg-danger me-2"><strong>Vote: </strong>{{ doctor.avgVote }}</div>
+                        <div class="mb-2 badge bg-primary"><strong>#Reviews: </strong>{{ doctor.countReviews }}</div>
+                        <div class="mb-2"><strong>Phone number: </strong>{{ doctor.phone }}</div>
+                        <div class="mb-2"><strong>Email: </strong>{{ doctor.email }}</div>
+                        <div class="mb-2"><strong>Prestazioni: </strong>{{ doctor.service }}</div>
+                        <div class="mb-2"><strong>Indirizzo </strong>{{ doctor.address }}</div>
+                        <div><strong>Specializzazioni:</strong></div>
+                        <ul v-if="doctor.specializations">
+                            <li v-for="spec in doctor.specializations">{{ spec.name }}</li>
+                        </ul>
+                        <div v-else>Nessuna specializzazione</div>
+                    </div>
+                </div>
+            </div>
             <div class="row g-5 py-5">
                 <div class="col">
                     <SendReview :doctor_id="doctor?.id"></SendReview>
@@ -61,7 +82,6 @@ export default {
                 <!-- /.col -->
             </div>
             <!-- /.row -->
-
         </div>
         <!-- /.container -->
     </section>
