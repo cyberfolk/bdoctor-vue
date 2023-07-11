@@ -13,17 +13,19 @@ export default {
 <template>
     <section id="SearchView">
         <div class="container py-5">
+
             <div class="input-group mb-3">
                 <div class="input-group-text text-decoration-none">Voto minimo: </div>
                 <select required class="form-select form-select-lg" v-model="state.avgVote">
-                    <option v-for="index in 6" :value='index - 1'>{{ index - 1 }}</option>
+                    <option v-for="index in 5" :value='index'>{{ index }}</option>
                 </select>
             </div>
             <!-- avgVote -->
+
             <div class="input-group mb-3">
                 <div class="input-group-text text-decoration-none">Reviews minime: </div>
                 <select required class="form-select form-select-lg" v-model="state.countReviews">
-                    <option v-for="index in 11" :value='index - 1'>{{ index - 1 }}</option>
+                    <option v-for="index in 10" :value='index'>{{ index }}</option>
                 </select>
             </div>
             <!-- countReviews -->
@@ -37,6 +39,7 @@ export default {
                 <!-- /.col-4 -->
             </div>
             <!-- /.row -->
+
         </div>
         <!-- /.container -->
     </section>

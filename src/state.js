@@ -13,10 +13,10 @@ export const state = reactive({
     API_DOCTORS: "api/doctors",
     specializations: [],
     doctors_by_spec: [],
-    doctors: [],        // Diventerà sponsored e si usa per il carosello
-    spec_id: '',        // Parametro di controllo dell'API-search
-    countReviews: 0,    // Parametro di controllo dell'API-search, indica il minimo di recensioni di un utente
-    avgVote: 0,         // Parametro di controllo dell'API-search, indica la media minima di un utente
+    doctors: [],           // Diventerà sponsored e si usa per il carosello
+    spec_id: null,         // Parametro di controllo dell'API-search
+    countReviews: '',    // Parametro di controllo dell'API-search, indica il minimo di recensioni di un utente
+    avgVote: '',         // Parametro di controllo dell'API-search, indica la media minima di un utente
 
     fetchSpecializations() {
         this.loading_specializations = true;
@@ -67,7 +67,6 @@ export const state = reactive({
         axios
             .get(url)
             .then(response => {
-                console.log(response);
                 if (response.data.success) {
                     this.doctors = response.data.doc_info;
                 } else {
