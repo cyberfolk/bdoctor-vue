@@ -41,27 +41,27 @@ export default {
 
             <div class="row">
                 <div class="col-4 g-3" v-for="doc in state.doctors_by_spec" v-show="doc.avgVote >= state.minVote">
-                    <div>
-                        <router-link :to="{ name: 'doctor', params: { slug: doc.slug } }"
-                            class=" text-decoration-none border-4">
-                            <div class="card" style="width:18rem;">
-                                <img :src="state.getImagePath(doc.photo)" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h2 class="card-title text-uppercase">{{ doc.name }} {{ doc.lastname }}</h2>
-                                    <div class="mb-2 badge bg-danger"><strong>Vote: </strong>{{ doc.avgVote }}</div>
-                                    <div class="mb-2"><strong>Phone number: </strong>{{ doc.phone }}</div>
-                                    <div class="mb-2"><strong>Email: </strong>{{ doc.email }}</div>
-                                    <div class="mb-2"><strong>Prestazioni: </strong>{{ doc.service }}</div>
-                                    <div class="mb-2"><strong>Indirizzo </strong>{{ doc.address }}</div>
-                                    <div><strong>Specializzazioni:</strong></div>
-                                    <ul v-if="doc.specializations">
-                                        <li v-for="spec in doc.specializations">{{ spec.name }}</li>
-                                    </ul>
-                                    <div v-else>Nessuna specializzazione</div>
-                                </div>
+                    <router-link :to="{ name: 'doctor', params: { slug: doc.slug } }"
+                                 class=" text-decoration-none border-4">
+                        <div class="card h-100" style="width:18rem;">
+                            <img v-if="doc.photo != null" :src="state.getImagePath(doc.photo)" class="card-img-top"
+                                 alt="...">
+                            <img v-else src="../assets/image/bdoctor.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h2 class="card-title text-uppercase">{{ doc.name }} {{ doc.lastname }}</h2>
+                                <div class="mb-2 badge bg-danger"><strong>Vote: </strong>{{ doc.avgVote }}</div>
+                                <div class="mb-2"><strong>Phone number: </strong>{{ doc.phone }}</div>
+                                <div class="mb-2"><strong>Email: </strong>{{ doc.email }}</div>
+                                <div class="mb-2"><strong>Prestazioni: </strong>{{ doc.service }}</div>
+                                <div class="mb-2"><strong>Indirizzo </strong>{{ doc.address }}</div>
+                                <div><strong>Specializzazioni:</strong></div>
+                                <ul v-if="doc.specializations">
+                                    <li v-for="spec in doc.specializations">{{ spec.name }}</li>
+                                </ul>
+                                <div v-else>Nessuna specializzazione</div>
                             </div>
-                        </router-link>
-                    </div>
+                        </div>
+                    </router-link>
                 </div>
             </div>
 
