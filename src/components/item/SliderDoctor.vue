@@ -15,13 +15,13 @@ export default defineComponent({
         return { state, };
     },
     mounted() {
-        state.getAllDoctor_User();
+        state.getDoctors();
     }
 })
 </script>
 <template>
     <Carousel :items-to-show="2.5" :wrap-around="true" :autoplay="4000" :pauseAutoplayOnHover="true">
-        <Slide v-for="(doctor, index) in state.doctors.doc_info" :key="index">
+        <Slide v-for="(doctor, index) in state.doctors" :key="index">
             <router-link :to="{ name: 'doctor', params: { slug: doctor.slug } }" class="text-decoration-none">
                 <div class="carousel__item ">
                     <div class="card flex-column align-items-center border-0">
@@ -30,7 +30,7 @@ export default defineComponent({
                         </div>
                         <div class="card-body d-flex flex-column">
                             <div class="text-center card-title">
-                                <span><strong>{{ state.doctors.user_info[index].name }} {{ state.doctors.user_info[index].lastname }}</strong></span>
+                                <span><strong>{{ doctor.name }} {{ doctor.lastname }}</strong></span>
                             </div>
                             <div class=" card-text text-align-start">
                                 <ul class="list-unstyled">
@@ -38,7 +38,7 @@ export default defineComponent({
                                         <small class=" fs-6">{{ doctor.phone }}</small>
                                     </li>
                                     <li>
-                                        <small class=" fs-6">{{ state.doctors.user_info[index].email }}</small>
+                                        <small class=" fs-6">{{ doctor.email }}</small>
                                     </li>
                                 </ul>
                                 <p>
@@ -80,7 +80,7 @@ export default defineComponent({
     transform: rotateY(-20deg) scale(0.9);
 }
 
-.carousel__slide--active~.carousel__slide {
+.carousel__slide--active ~ .carousel__slide {
     transform: rotateY(20deg) scale(0.9);
 }
 

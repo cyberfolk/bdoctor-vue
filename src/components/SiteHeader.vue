@@ -1,15 +1,22 @@
 <script>
+import SearchSpecializations from './item/SearchSpecializations.vue';
 export default {
   name: "SiteHeader",
+  components: {
+    SearchSpecializations
+  },
 }
 </script>
 
 <template>
   <header id="app_header">
     <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow px-5">
-      <a class="navbar-brand" href="{{ url('/') }}">
-        <img height="80" src="./../assets/image/bdoctor.png" alt="Personal Logo" class="">
-      </a>
+      <router-link class="navbar-brand" :to="{ 'name': 'home' }">
+        <img height="80" src="./../assets/image/bdoctor.png" alt="Personal Logo">
+      </router-link>
+
+
+      <SearchSpecializations></SearchSpecializations>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         @click="visible = !visible">
@@ -20,18 +27,14 @@ export default {
       <div class="ps-4 navbar-collapse collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <router-link class="nav-link text-white" active-class="active" :to="{ 'name': 'home' }">Home</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link text-white" active-class="active" :to="{ 'name': 'search' }"> Search</router-link>
-          </li>
-          <li class="nav-item">
             <a class="nav-link text-white" href="http://127.0.0.1:8000/register">Register</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-white" href="http://127.0.0.1:8000/login">Login</a>
           </li>
         </ul>
+        <!-- </div> -->
+
       </div>
     </nav>
     <!-- navbar-collapse -->

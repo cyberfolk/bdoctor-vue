@@ -1,5 +1,4 @@
 import { reactive } from 'vue'
-import { router } from './router';
 import axios from "axios";
 
 export const state = reactive({
@@ -7,17 +6,17 @@ export const state = reactive({
     loading_doctors_by_spec: true,
     API_URL_BASE: "http://127.0.0.1:8000/",
     API_SPECIALIZATIONS: "api/specializations",
-    API_DOCTOR_BY_SPEC: "api/doctors_by_spec",
+    API_SEARCH: "api/search",
     API_MESSAGE: "api/message",
     API_REVIEW: "api/review",
     API_VOTE: "api/vote",
     API_DOCTORS: "api/doctors",
     specializations: [],
     doctors_by_spec: [],
-    doctors:[],
-    users:[],
-    specialization_selected: '',
-    minVote: 1,
+    doctors: [],        // Diventerà sponsored e si usa per il carosello
+    spec_id: '',        // Parametro di controllo dell'API-search
+    countReviews: 0,    // Parametro di controllo dell'API-search, indica il minimo di recensioni di un utente
+    avgVote: 0,         // Parametro di controllo dell'API-search, indica la media minima di un utente
 
     fetchSpecializations() {
         this.loading_specializations = true;
@@ -37,9 +36,12 @@ export const state = reactive({
             })
     },
 
-    getDoctorBySpec() {
+    search() {
         this.loading_doctors_by_spec = true;
-        const url = this.API_URL_BASE + this.API_DOCTOR_BY_SPEC + '/' + this.specialization_selected;
+        const url = this.API_URL_BASE + this.API_SEARCH +
+            '?avgVote=' + this.avgVote +
+            '&spec_id=' + this.spec_id +
+            '&countReviews=' + this.countReviews;
         axios
             .get(url)
             .then(response => {
@@ -60,22 +62,20 @@ export const state = reactive({
         return this.API_URL_BASE + 'storage/' + path
     },
 
-    getAllDoctor_User(){
-        const url=this.API_URL_BASE + this.API_DOCTORS
+    getDoctors() {
+        const url = this.API_URL_BASE + this.API_DOCTORS
         axios
-        .get(url)
-        .then(response=>{
-            console.log(response);
-            if (response.data.success) {
-                this.doctors = response.data;
-                console.log(this.doctors);
-            } else {
-                this.doctors= []
-            }
-
-        })
-        .catch(error => {
-            this.error = error.message
-        })
+            .get(url)
+            .then(response => {
+                console.log(response);
+                if (response.data.success) {
+                    this.doctors = response.data.doc_info;
+                } else {
+                    this.doctors = []
+                }
+            })
+            .catch(error => {
+                this.error = error.message
+            })
     },
 });
