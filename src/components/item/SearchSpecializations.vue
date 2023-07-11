@@ -1,6 +1,5 @@
 <script>
 import { state } from "../../state";
-
 export default {
     name: "SearchSpecializations",
     data() {
@@ -9,10 +8,6 @@ export default {
     mounted() {
         state.fetchSpecializations();
     },
-    methods() {
-        state.search()
-    }
-
 };
 </script>
 <template>
@@ -23,12 +18,11 @@ export default {
             <option v-for="spec in state.specializations" :value='spec.id'>{{ spec.name }}</option>
         </select>
 
-        <router-link class="input-group-text text-decoration-none" active-class="active" :to="{ 'name': 'search' }"
-            @click="state.search()">Search
+        <router-link class="input-group-text text-decoration-none"
+            :to="{ 'name': 'search' }" @click="state.search()">Search
         </router-link>
     </div>
 </template>
-
 
 <style lang="scss" scoped></style>
 

@@ -12,31 +12,25 @@ export default {
         return {
             state,
             doctor: null,
-            results: null
         }
-    }, methods: {
-        getDoctorInfo(url) {
-            axios
-                .get(url)
-                .then(response => {
-                    if (response.data.success) {
-                        this.doctor = response.data.result[0];
-                    } else {
-                        this.$router.push({
-                            name: 'not-found'
-                        })
-                    }
-                })
-                .catch(error => {
-                    console.log(error);
-
-                })
-        },
     },
     mounted() {
         const url = state.API_URL_BASE + 'api/doctors/' + this.$route.params.slug;
-        console.log(url);
-        this.getDoctorInfo(url);
+        axios
+            .get(url)
+            .then(response => {
+                if (response.data.success) {
+                    //Viene restituito un array di un solo elemento che contiene l'unico dottore con lo slug richiesto, quindi per prenderlo devo fare [0]
+                    this.doctor = response.data.result[0];
+                } else {
+                    this.$router.push({
+                        name: 'not-found'
+                    })
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
     },
 };
 </script>
@@ -48,10 +42,10 @@ export default {
                 <h1 class="text-center align-middle pt-5">{{ doctor.name }} {{ doctor.lastname }}</h1>
                 <div class="row">
                     <div class="col-4">
-                        <img v-if="doctor.photo != null" :src="state.getImagePath(doctor.photo)" class="card-img-top"
-                            alt="...">
+                        <img v-if="doctor.photo != null" :src="state.getImagePath(doctor.photo)" class="card-img-top" alt="...">
                         <img v-else src="./../assets//image/bdoctor.png" class="card-img-top" alt="...">
                     </div>
+                    <!-- /.col-4 -->
                     <div class="col-8">
                         <div class="mb-2 badge bg-danger me-2"><strong>Vote: </strong>{{ doctor.avgVote }}</div>
                         <div class="mb-2 badge bg-primary"><strong>#Reviews: </strong>{{ doctor.countReviews }}</div>
@@ -65,8 +59,11 @@ export default {
                         </ul>
                         <div v-else>Nessuna specializzazione</div>
                     </div>
+                    <!-- /.col-8 -->
                 </div>
+                <!-- /.row -->
             </div>
+            <!-- /.doc_info -->
             <div class="row g-5 py-5">
                 <div class="col">
                     <SendReview :doctor_id="doctor?.id"></SendReview>

@@ -27,7 +27,6 @@ export default {
                 text: this.text,
                 doctor_id: this.doctor_id,
             };
-            console.log(data);
 
             axios
                 .post(state.API_URL_BASE + state.API_REVIEW, data)
@@ -43,7 +42,6 @@ export default {
                 });
         },
     }
-
 };
 </script>
 <template>
