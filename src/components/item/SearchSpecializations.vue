@@ -16,10 +16,10 @@ export default {
 };
 </script>
 <template>
-    <div class="input-group mb-3">
+    <div class="input-group">
         <select required class="form-select form-select-lg" v-model="state.spec_id"
             name="specializations" id="specializations">
-            <option disabled selected>Select one</option>
+            <option disabled selected :value="null">Che specialista desideri?</option>
             <option v-for="spec in state.specializations" :value='spec.id'>{{ spec.name }}</option>
         </select>
 
