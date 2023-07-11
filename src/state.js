@@ -7,14 +7,16 @@ export const state = reactive({
     loading_doctors_by_spec: true,
     API_URL_BASE: "http://127.0.0.1:8000/",
     API_SPECIALIZATIONS: "api/specializations",
-    API_DOCTOR_BY_SPEC: "api/doctor_by_spec",
+    API_DOCTOR_BY_SPEC: "api/search",
     API_MESSAGE: "api/message",
     API_REVIEW: "api/review",
     API_VOTE: "api/vote",
+    API_DOCTORS: "api/doctors",
     specializations: [],
     doctors_by_spec: [],
-    users_by_spec: [],
-    specialization_selected: '',
+    spec_id: '',        // Parametro di controllo dell'API-search
+    countReviews: 0,    // Parametro di controllo dell'API-search, indica il minimo di recensioni di un utente
+    avgVote: 0,         // Parametro di controllo dell'API-search, indica la media minima di un utente
 
     fetchSpecializations() {
         this.loading_specializations = true;
@@ -34,19 +36,21 @@ export const state = reactive({
             })
     },
 
-    getDoctorBySpec() {
+    search() {
         this.loading_doctors_by_spec = true;
-        const url = this.API_URL_BASE + this.API_DOCTOR_BY_SPEC + '/' + this.specialization_selected;
+        const url = this.API_URL_BASE + this.API_DOCTOR_BY_SPEC +
+            '?avgVote=' + this.avgVote +
+            '&spec_id=' + this.spec_id +
+            '&countReviews=' + this.countReviews;
+        console.log(url);
         axios
             .get(url)
             .then(response => {
                 if (response.data.success) {
                     this.doctors_by_spec = response.data.result;
-                    this.users_by_spec = response.data.users;
                     this.loading_specializations = false;
                 } else {
                     this.doctors_by_spec = []
-                    this.users_by_spec = []
                 }
                 this.loading_doctors_by_spec = false;
             })
