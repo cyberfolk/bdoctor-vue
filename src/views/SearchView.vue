@@ -22,7 +22,7 @@ export default {
         <div v-if="state.doctors_by_spec != 0" class="container">
             <SearchSpecializations></SearchSpecializations>
             <!--<small>ordina per:</small>
-            <!--<small>ordina per:</small>
+            <small>ordina per:</small>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1"> Numero recensioni </label>
