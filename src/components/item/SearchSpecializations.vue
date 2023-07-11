@@ -11,7 +11,7 @@ export default {
         state.fetchSpecializations();
     },
     methods() {
-        state.getDoctorBySpec()
+        state.search()
     }
 
 };
@@ -22,14 +22,14 @@ export default {
 
         <!--       <form action="{{ route('form-specialization') }}" method="post"> -->
         <div class="input-group mb-3">
-            <select required class="form-select form-select-lg" v-model="state.specialization_selected"
+            <select required class="form-select form-select-lg" v-model="state.spec_id"
                 name="specializations" id="specializations">
                 <option disabled selected>Select one</option>
                 <option v-for="spec in state.specializations" :value='spec.id'>{{ spec.name }}</option>
             </select>
 
             <router-link class="input-group-text text-decoration-none" active-class="active" :to="{ 'name': 'search' }"
-                @click="state.getDoctorBySpec()">Search
+                @click="state.search()">Search
             </router-link>
 
         </div>

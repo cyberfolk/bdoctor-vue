@@ -20,12 +20,12 @@ export default {
 
       <!--       <form action="{{ route('form-specialization') }}" method="post"> -->
       <div class="input-group mb-3">
-        <select required class="form-select form-select-lg" v-model="state.specialization_selected" name="specializations"
+        <select required class="form-select form-select-lg" v-model="state.spec_id" name="specializations"
           id="specializations">
           <option disabled selected>Select one</option>
           <option v-for="spec in state.specializations" :value='spec.id'>{{ spec.name }}</option>
         </select>
-        <button class="input-group-text" @click="state.getDoctorBySpec()">Submit</button>
+        <button class="input-group-text" @click="state.search()">Submit</button>
       </div>
       <!-- <div class="my-3"><small class="text-danger">{{ $message }}</small></div> -->
       <!--       </form> -->
