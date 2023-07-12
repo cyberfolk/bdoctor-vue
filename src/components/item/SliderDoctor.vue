@@ -15,13 +15,13 @@ export default defineComponent({
         return { state, };
     },
     mounted() {
-        state.getDoctors();
+        state.getDoctorsSponsored();
     }
 })
 </script>
 <template>
     <Carousel :items-to-show="2.5" :wrap-around="true" :autoplay="4000" :pauseAutoplayOnHover="true">
-        <Slide v-for="(doctor, index) in state.doctors" :key="index">
+        <Slide v-for="(doctor, index) in state.doctorsSponsored" :key="index">
             <router-link :to="{ name: 'doctor', params: { slug: doctor.slug } }" class="text-decoration-none">
                 <div class="carousel__item ">
                     <div class="card flex-column align-items-center border-0">

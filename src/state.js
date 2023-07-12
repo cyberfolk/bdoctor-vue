@@ -10,10 +10,10 @@ export const state = reactive({
     API_MESSAGE: "api/message",
     API_REVIEW: "api/review",
     API_VOTE: "api/vote",
-    API_DOCTORS: "api/doctors",
+    API_SPONSORED: "api/sponsored",
     specializations: [],
     doctors_by_spec: [],
-    doctors: [],           // Diventerà sponsored e si usa per il carosello
+    doctorsSponsored: [],           // Diventerà sponsored e si usa per il carosello
     spec_id: null,         // Parametro di controllo dell'API-search
     countReviews: '',    // Parametro di controllo dell'API-search, indica il minimo di recensioni di un utente
     avgVote: '',         // Parametro di controllo dell'API-search, indica la media minima di un utente
@@ -62,15 +62,15 @@ export const state = reactive({
         return this.API_URL_BASE + 'storage/' + path
     },
 
-    getDoctors() {
-        const url = this.API_URL_BASE + this.API_DOCTORS
+    getDoctorsSponsored() {
+        const url = this.API_URL_BASE + this.API_SPONSORED
         axios
             .get(url)
             .then(response => {
                 if (response.data.success) {
-                    this.doctors = response.data.doc_info;
+                    this.doctorsSponsored = response.data.doc_info;
                 } else {
-                    this.doctors = []
+                    this.doctorsSponsored = []
                 }
             })
             .catch(error => {
