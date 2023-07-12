@@ -53,6 +53,7 @@ export default {
                         <div class="mb-2"><strong>Email: </strong>{{ doctor.email }}</div>
                         <div class="mb-2"><strong>Prestazioni: </strong>{{ doctor.service }}</div>
                         <div class="mb-2"><strong>Indirizzo </strong>{{ doctor.address }}</div>
+                        <a :href="state.getImagePath(doctor.cv)" download>File</a>
                         <div><strong>Specializzazioni:</strong></div>
                         <ul v-if="doctor.specializations">
                             <li v-for="spec in doctor.specializations">{{ spec.name }}</li>
