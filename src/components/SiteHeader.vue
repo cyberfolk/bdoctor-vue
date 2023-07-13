@@ -10,7 +10,7 @@ export default {
 
 <template>
   <header id="app_header">
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary shadow px-4">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow px-4">
       <router-link class="navbar-brand" :to="{ 'name': 'home' }">
         <img height="80" src="./../assets/image/bdoctor.png" alt="Personal Logo">
       </router-link>

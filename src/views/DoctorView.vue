@@ -2,12 +2,13 @@
 import SendReview from '../components/section/SendReview.vue';
 import SendMessage from '../components/section/SendMessage.vue';
 import SendVote from '../components/section/SendVote.vue';
+import NotFound from '../views/NotFound.vue';
 import { state } from '../state';
 import axios from "axios";
 
 export default {
     name: "DoctorView",
-    components: { SendReview, SendMessage, SendVote },
+    components: { SendReview, SendMessage, SendVote, NotFound },
     data() {
         return {
             state,
@@ -42,12 +43,13 @@ export default {
                 <h1 class="text-center align-middle pt-5">{{ doctor.name }} {{ doctor.lastname }}</h1>
                 <div class="row">
                     <div class="col-4">
-                        <img v-if="doctor.photo != null" :src="state.getImagePath(doctor.photo)" class="card-img-top" alt="...">
+                        <img v-if="doctor.photo != null" :src="state.getImagePath(doctor.photo)" class="card-img-top"
+                            alt="...">
                         <img v-else src="./../assets//image/bdoctor.png" class="card-img-top" alt="...">
                     </div>
                     <!-- /.col-4 -->
                     <div class="col-8">
-                        <div class="mb-2 badge bg-danger me-2"><strong>Vote: </strong>{{ doctor.avgVote }}</div>
+                        <div class="mb-2 badge bg-danger me-2"><strong>Vote: </strong>{{ doctor.avgVote ? doctor.avgVote : '-' }}</div>
                         <div class="mb-2 badge bg-primary"><strong>#Reviews: </strong>{{ doctor.countReviews }}</div>
                         <div class="mb-2"><strong>Phone number: </strong>{{ doctor.phone }}</div>
                         <div class="mb-2"><strong>Email: </strong>{{ doctor.email }}</div>
@@ -62,23 +64,28 @@ export default {
                     <!-- /.col-8 -->
                 </div>
                 <!-- /.row -->
+
+                <!-- /.doc_info -->
+                <div class="row g-5 py-5">
+                    <div class="col">
+                        <SendReview :doctor_id="doctor?.id"></SendReview>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col">
+                        <SendMessage :doctor_id="doctor?.id"></SendMessage>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col">
+                        <SendVote :doctor_id="doctor?.id"></SendVote>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
             </div>
-            <!-- /.doc_info -->
-            <div class="row g-5 py-5">
-                <div class="col">
-                    <SendReview :doctor_id="doctor?.id"></SendReview>
-                </div>
-                <!-- /.col -->
-                <div class="col">
-                    <SendMessage :doctor_id="doctor?.id"></SendMessage>
-                </div>
-                <!-- /.col -->
-                <div class="col">
-                    <SendVote :doctor_id="doctor?.id"></SendVote>
-                </div>
-                <!-- /.col -->
+            <!-- doctor -->
+            <div v-else>
+                <NotFound></NotFound>
             </div>
-            <!-- /.row -->
         </div>
         <!-- /.container -->
     </section>

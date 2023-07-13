@@ -24,7 +24,7 @@ export default defineComponent({
         <Slide v-for="(doctor, index) in state.doctorsSponsored" :key="index">
             <router-link :to="{ name: 'doctor', params: { slug: doctor.slug } }" class="text-decoration-none">
                 <div class="carousel__item ">
-                    <div class="card flex-column align-items-center border-0">
+                    <div class="card bg-light flex-column align-items-center border-0">
                         <div class=" img-fluid profile_circle mt-3">
                             <img :src="state.getImagePath(doctor.photo)" alt="">
                         </div>
@@ -106,8 +106,6 @@ export default defineComponent({
     aspect-ratio: 1;
     z-index: 2;
     box-shadow: 0px 0px 10px 0px #BBBBBB;
-
-
 }
 
 img {

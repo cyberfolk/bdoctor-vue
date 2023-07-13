@@ -31,10 +31,13 @@ $theme-colors: (
     "warning": $warning,
     "danger": $danger,
     "primary": $primary,
-    "light": $light,
-    "dark": $dark,
+    //"light": $light,
+    //"dark": $dark,
 
     /* OVERRIDDEN */
+    "dark": #0d2818,
+    //"light": #B3FCD4,
+    "light": #4EF99B,
     /* ... */
 
     /* ADDED BY ME */
