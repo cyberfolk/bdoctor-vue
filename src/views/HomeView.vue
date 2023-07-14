@@ -1,9 +1,13 @@
 <script>
 import SliderDoctor from "../components/item/SliderDoctor.vue";
+import JumbotronSection from "../components/section/JumbotronSection.vue";
+import ChiSiamoSection from "../components/section/ChiSiamoSection.vue";
 export default {
     name: "HomeView",
     components: {
         SliderDoctor,
+        JumbotronSection,
+        ChiSiamoSection
     },
 };
 </script>
@@ -11,11 +15,10 @@ export default {
 <template>
     <section id="HomeView">
         <div class="container text-center">
-            <h1 class="text-center align-middle py-5">HomeView</h1>
-
+            <JumbotronSection></JumbotronSection>
             <SliderDoctor></SliderDoctor>
-
-        </div>
+            <ChiSiamoSection></ChiSiamoSection>
+        </div>  
         <!-- /.container -->
     </section>
     <!-- /#HomeView -->

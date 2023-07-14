@@ -20,11 +20,12 @@ export default defineComponent({
 })
 </script>
 <template>
-    <Carousel :items-to-show="2.5" :wrap-around="true" :autoplay="4000" :pauseAutoplayOnHover="true">
-        <Slide v-for="(doctor, index) in state.doctorsSponsored" :key="index">
-            <router-link :to="{ name: 'doctor', params: { slug: doctor.slug } }" class="text-decoration-none">
-                <div class="carousel__item ">
-                    <div class="card bg-light flex-column align-items-center border-0">
+    <h1 class="slider-title color-dark my-1">I NOSTRI SPECIALISTI</h1>
+    <Carousel :items-to-show="3.1" :wrap-around="true" :autoplay="4000" :pauseAutoplayOnHover="true" class="py-5">
+        <Slide v-for="(doctor, index) in state.doctorsSponsored" :key="index" class="card-item">
+            <router-link :to="{ name: 'doctor', params: { slug: doctor.slug } }" class="text-decoration-none h-100">
+                <div class="carousel_item h-100">
+                    <div class="card bg-light flex-column align-items-center border-0 h-100">
                         <div class=" img-fluid profile_circle mt-3">
                             <img :src="state.getImagePath(doctor.photo)" alt="">
                         </div>
@@ -35,7 +36,7 @@ export default defineComponent({
                             <div class=" card-text text-align-start">
                                 <ul class="list-unstyled">
                                     <li>
-                                        <small class=" fs-6">{{ doctor.phone }}</small>
+                                        <small class="text-white fs-6">{{ doctor.phone }}</small>
                                     </li>
                                     <li>
                                         <small class=" fs-6">{{ doctor.email }}</small>
@@ -59,6 +60,15 @@ export default defineComponent({
   
 
 <style scoped>
+.slider-title {
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+.card-item {
+    height: 600px;
+}
+
 .carousel__slide {
     padding: 5px;
 }
