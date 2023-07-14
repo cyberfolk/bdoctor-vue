@@ -43,13 +43,13 @@ export default {
             <div v-if="doctor" class="doc_info fs-5">
                 <h1 class="text-center align-middle fw-semibold text-uppercase pt-5 pb-3">{{ doctor.name }} {{ doctor.lastname }}</h1>
                 <div class="row">
-                    <div class="col-4 p-0">
+                    <div class="col-md-4 p-0">
                         <img v-if="doctor.photo != null" :src="state.getImagePath(doctor.photo)" class="card-img-top"
                             alt="...">
                         <img v-else src="./../assets//image/bdoctor.png" class="card-img-top" alt="...">
                     </div>
                     <!-- /.col-4 -->
-                    <div class="col-8 bg-light">
+                    <div class="col-md-8 bg-light">
                         <div class="d-flex mt-3">
                             <div class="mb-2 fs-6 me-3 fw-bold"><strong class="fs-6"><i class="fa-solid fa-star fs-5 text-gold"></i></strong> {{ doctor.avgVote ? doctor.avgVote : '-' }}</div>
                             <div class="mb-2 badge text-bg-success fs-6"><strong class=" fs-6">N. Recensioni: </strong>{{doctor.countReviews }}</div>
@@ -72,15 +72,15 @@ export default {
 
                 <!-- /.doc_info -->
                 <div class="row g-5 py-5">
-                    <div class="col">
+                    <div class="col-12 col-md-4">
                         <SendReview :doctor_id="doctor?.id"></SendReview>
                     </div>
                     <!-- /.col -->
-                    <div class="col">
+                    <div class="col-12 col-md-4">
                         <SendMessage :doctor_id="doctor?.id"></SendMessage>
                     </div>
                     <!-- /.col -->
-                    <div class="col">
+                    <div class="col-12 col-md-4">
                         <SendVote :doctor_id="doctor?.id"></SendVote>
                     </div>
                     <!-- /.col -->
