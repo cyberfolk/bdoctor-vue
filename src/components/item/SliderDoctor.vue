@@ -12,20 +12,27 @@ export default defineComponent({
         Navigation,
     },
     data() {
-        return { state, };
+        return {
+            state,
+            nCardsCarousel: '1'
+        };
     },
     mounted() {
         state.getDoctorsSponsored();
+        if (window.innerWidth > 720) {
+            this.nCardsCarousel = '3'
+        }
     }
 })
 </script>
 <template>
     <h1 class="slider-title color-dark my-1">I NOSTRI SPECIALISTI</h1>
-    <Carousel :items-to-show="3.1" :wrap-around="true" :autoplay="4000" :pauseAutoplayOnHover="true" class="py-5">
-        <Slide v-for="(doctor, index) in state.doctorsSponsored" :key="index" class="card-item">
-            <router-link :to="{ name: 'doctor', params: { slug: doctor.slug } }" class="text-decoration-none h-100">
-                <div class="carousel_item h-100">
-                    <div class="card bg-light flex-column align-items-center border-0 h-100">
+    <Carousel :items-to-show="nCardsCarousel" :wrap-around="true" :autoplay="4000" :pauseAutoplayOnHover="true"
+        class="py-5">
+        <Slide v-for="(doctor, index) in state.doctorsSponsored" :key="index">
+            <router-link :to="{ name: 'doctor', params: { slug: doctor.slug } }" class="text-decoration-none p-2">
+                <div class="carousel_item p-3 m-2">
+                    <div class="card bg-light flex-column align-items-center border-0">
                         <div class=" img-fluid profile_circle mt-3">
                             <img :src="state.getImagePath(doctor.photo)" alt="">
                         </div>
@@ -65,10 +72,6 @@ export default defineComponent({
     font-size: 2.5rem;
 }
 
-.card-item {
-    height: 600px;
-}
-
 .carousel__slide {
     padding: 5px;
 }
@@ -90,23 +93,23 @@ export default defineComponent({
     transform: rotateY(-20deg) scale(0.9);
 }
 
-.carousel__slide--active ~ .carousel__slide {
+.carousel__slide--active~.carousel__slide {
     transform: rotateY(20deg) scale(0.9);
 }
 
 .carousel__slide--prev {
     opacity: 1;
-    transform: rotateY(-10deg) scale(0.95);
+    transform: rotateY(-10deg) scale(0.90);
 }
 
 .carousel__slide--next {
     opacity: 1;
-    transform: rotateY(10deg) scale(0.95);
+    transform: rotateY(10deg) scale(0.90);
 }
 
 .carousel__slide--active {
     opacity: 1;
-    transform: rotateY(0) scale(1.1);
+    transform: rotateY(0) scale(1.2);
 }
 
 .profile_circle {
