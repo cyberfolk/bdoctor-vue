@@ -48,7 +48,7 @@ export default {
 </script>
 <template>
     <section id="send_message">
-        <h4>Invia un Messaggio</h4>
+        <h3 class="fw-bold">Invia un Messaggio</h3>
         <div v-if="alert" class="alert alert-success text-start" role="alert">
             Messaggio inviato con successo!
         </div>

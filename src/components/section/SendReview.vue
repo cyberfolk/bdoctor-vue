@@ -46,7 +46,7 @@ export default {
 </script>
 <template>
     <section id="send_review">
-        <h4>Invia una recensione</h4>
+        <h3 class="fw-bold">Invia una recensione</h3>
         <div v-if="alert" class="alert alert-success text-start" role="alert">
             Messaggio inviato con successo!
         </div>
