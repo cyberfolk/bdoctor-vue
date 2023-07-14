@@ -10,6 +10,7 @@ export default {
 
 <template>
   <main id="app_main" class="">
+    
   </main>
   <!-- /#app_main -->
 </template>

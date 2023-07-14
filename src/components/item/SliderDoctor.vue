@@ -12,18 +12,26 @@ export default defineComponent({
         Navigation,
     },
     data() {
-        return { state, };
+        return {
+            state,
+            nCardsCarousel: '1'
+        };
     },
     mounted() {
         state.getDoctorsSponsored();
+        if (window.innerWidth > 720) {
+            this.nCardsCarousel = '3'
+        }
     }
 })
 </script>
 <template>
-    <Carousel :items-to-show="2.5" :wrap-around="true" :autoplay="4000" :pauseAutoplayOnHover="true">
+    <h1 class="slider-title color-dark my-1">I NOSTRI SPECIALISTI</h1>
+    <Carousel :items-to-show="nCardsCarousel" :wrap-around="true" :autoplay="4000" :pauseAutoplayOnHover="true"
+        class="py-5">
         <Slide v-for="(doctor, index) in state.doctorsSponsored" :key="index">
-            <router-link :to="{ name: 'doctor', params: { slug: doctor.slug } }" class="text-decoration-none">
-                <div class="carousel__item ">
+            <router-link :to="{ name: 'doctor', params: { slug: doctor.slug } }" class="text-decoration-none p-2">
+                <div class="carousel_item p-3 m-2">
                     <div class="card bg-light flex-column align-items-center border-0">
                         <div class=" img-fluid profile_circle mt-3">
                             <img :src="state.getImagePath(doctor.photo)" alt="">
@@ -35,7 +43,7 @@ export default defineComponent({
                             <div class=" card-text text-align-start">
                                 <ul class="list-unstyled">
                                     <li>
-                                        <small class=" fs-6">{{ doctor.phone }}</small>
+                                        <small class="text-white fs-6">{{ doctor.phone }}</small>
                                     </li>
                                     <li>
                                         <small class=" fs-6">{{ doctor.email }}</small>
@@ -59,6 +67,11 @@ export default defineComponent({
   
 
 <style scoped>
+.slider-title {
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
 .carousel__slide {
     padding: 5px;
 }
@@ -80,23 +93,23 @@ export default defineComponent({
     transform: rotateY(-20deg) scale(0.9);
 }
 
-.carousel__slide--active ~ .carousel__slide {
+.carousel__slide--active~.carousel__slide {
     transform: rotateY(20deg) scale(0.9);
 }
 
 .carousel__slide--prev {
     opacity: 1;
-    transform: rotateY(-10deg) scale(0.95);
+    transform: rotateY(-10deg) scale(0.90);
 }
 
 .carousel__slide--next {
     opacity: 1;
-    transform: rotateY(10deg) scale(0.95);
+    transform: rotateY(10deg) scale(0.90);
 }
 
 .carousel__slide--active {
     opacity: 1;
-    transform: rotateY(0) scale(1.1);
+    transform: rotateY(0) scale(1.2);
 }
 
 .profile_circle {

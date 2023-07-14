@@ -10,3 +10,11 @@
   height: 100%;
   object-fit: cover;
 }
+
+.ms-shadow-gold {
+  box-shadow: 0 0.5rem 1rem rgba(#e6c200, 0.3);
+}
+
+.ms-border-gold {
+  border: 2px solid #e6c200 !important;
+}

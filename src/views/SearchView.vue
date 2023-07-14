@@ -1,9 +1,10 @@
 <script>
-import CardDoctor from "./../components/item/CardDoctor.vue"
+import CardDoctor from "./../components/item/CardDoctor.vue";
+import SearchSpecializations from '../components/item/SearchSpecializations.vue';
 import { state } from "../state";
 export default {
     name: "SearchView",
-    components: { CardDoctor },
+    components: { CardDoctor, SearchSpecializations },
     data() {
         return { state };
     },
@@ -12,28 +13,33 @@ export default {
 
 <template>
     <section id="SearchView">
-        <div class="container py-5">
+        <div class="container">
 
-            <div class="input-group mb-3">
-                <div class="input-group-text text-decoration-none">Voto minimo: </div>
-                <select required class="form-select form-select-lg" v-model="state.avgVote">
-                    <option v-for="index in 5" :value='index'>{{ index }}</option>
-                </select>
-            </div>
-            <!-- avgVote -->
+            <div class="d-flex my-3">
 
-            <div class="input-group mb-3">
-                <div class="input-group-text text-decoration-none">Reviews minime: </div>
-                <select required class="form-select form-select-lg" v-model="state.countReviews">
-                    <option v-for="index in 10" :value='index'>{{ index }}</option>
-                </select>
+                <!-- avgVote -->
+                <div class="input-group me-2">
+                    <div class="input-group-text text-decoration-none">Media voto: </div>
+                    <select required class="form-select form-select-lg" v-model="state.avgVote">
+                        <option value="">0</option>
+                        <option v-for="index in 5" :value='index'>+ {{ index }}</option>
+                    </select>
+                </div>
+
+                <!-- countReviews -->
+                <div class="input-group ms-2">
+                    <div class="input-group-text text-decoration-none">N. recensioni: </div>
+                    <select required class="form-select form-select-lg" v-model="state.countReviews">
+                        <option value="">0</option>
+                        <option v-for="index in 10" :value='index'>+ {{ index }}</option>
+                    </select>
+                </div>
             </div>
-            <!-- countReviews -->
 
             <p class="text-center">Sono stati trovati {{ state.doctors_by_spec.length }} risultati</p>
 
             <div class="row" v-if="state.doctors_by_spec">
-                <div class="col-4 g-3" v-for="doc in state.doctors_by_spec">
+                <div class="col-12 g-3" v-for="doc in state.doctors_by_spec">
                     <CardDoctor :doctor="doc" />
                 </div>
                 <!-- /.col-4 -->

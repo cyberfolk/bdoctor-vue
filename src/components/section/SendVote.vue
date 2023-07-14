@@ -43,7 +43,7 @@ export default {
 
 <template>
     <section id="send_vote">
-        <h4>Invia il tuo voto</h4>
+        <h3 class="fw-bold">Invia il tuo voto</h3>
         <div v-if="alert" class="alert alert-success text-start" role="alert">
             Voto inviato con successo!
         </div>
