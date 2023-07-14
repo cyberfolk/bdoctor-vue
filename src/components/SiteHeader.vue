@@ -23,11 +23,9 @@ export default {
       </button>
       <!-- navbar-toggler -->
 
-      
       <div class="navbar-collapse collapse justify-content-end align-items-center" id="navbarSupportedContent">
+        <SearchSpecializations class="d-none d-md-flex flex-grow-1 m-3"></SearchSpecializations>
         <!-- Search Specialization -->
-        <SearchSpecializations class="flex-grow-1 m-3"></SearchSpecializations>
-        
         <ul class="navbar-nav m-3">
           <li class="nav-item">
             <a class="ms-border-gold badge fs-6 fw-light py-3 text-white py-2 my-2 me-3 underline-n" href="http://127.0.0.1:8000/register">Register</a>
@@ -51,5 +49,4 @@ export default {
 .underline-n {
   text-decoration: none;
 }
-
 </style>

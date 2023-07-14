@@ -15,8 +15,6 @@ export default {
     <section id="SearchView">
         <div class="container">
 
-            <SearchSpecializations></SearchSpecializations>
-
             <div class="d-flex my-3">
 
                 <!-- avgVote -->
@@ -27,7 +25,7 @@ export default {
                         <option v-for="index in 5" :value='index'>+ {{ index }}</option>
                     </select>
                 </div>
-                
+
                 <!-- countReviews -->
                 <div class="input-group ms-2">
                     <div class="input-group-text text-decoration-none">N. recensioni: </div>
