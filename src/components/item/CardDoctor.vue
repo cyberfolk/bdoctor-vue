@@ -40,8 +40,8 @@ export default {
                             </ul>
                             <div v-else>Nessuna specializzazione</div>
                         </div>
-                        <div class="badge-position d-flex align-items-center justify-content-center">
-                            <div class="mb-2 fs-7 me-3"><strong class="fs-7"><i
+                        <div class="badge-position">
+                            <div class="mb-2 fs-7 me-3 text-end"><strong class="fs-7"><i
                                         class="fa-solid fa-star text-gold"></i></strong> {{ doctor.avgVote ?
                                             doctor.avgVote : '-' }}</div>
                             <div class="mb-2 badge text-bg-success fs-7"><strong class=" fs-7">N. Recensioni: </strong>{{
@@ -71,4 +71,5 @@ img {
     position: absolute;
     top: 1rem;
     right: 1rem;
-}</style>
+}
+</style>
