@@ -26,7 +26,7 @@ export default defineComponent({
 })
 </script>
 <template>
-    <h1 class="slider-title color-dark my-1">I NOSTRI SPECIALISTI</h1>
+    <h1 class="slider-title text-center color-dark my-1">I NOSTRI SPECIALISTI</h1>
     <Carousel :items-to-show="nCardsCarousel" :wrap-around="true" :autoplay="4000" :pauseAutoplayOnHover="true"
         class="py-5">
         <Slide v-for="(doctor, index) in state.doctorsSponsored" :key="index">
@@ -93,7 +93,7 @@ export default defineComponent({
     transform: rotateY(-20deg) scale(0.9);
 }
 
-.carousel__slide--active~.carousel__slide {
+.carousel__slide--active ~ .carousel__slide {
     transform: rotateY(20deg) scale(0.9);
 }
 

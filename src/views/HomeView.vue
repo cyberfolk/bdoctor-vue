@@ -14,11 +14,11 @@ export default {
 
 <template>
     <section id="HomeView">
-        <div class="container text-center">
+        <div class="container">
             <JumbotronSection></JumbotronSection>
             <SliderDoctor></SliderDoctor>
             <ChiSiamoSection></ChiSiamoSection>
-        </div>  
+        </div>
         <!-- /.container -->
     </section>
     <!-- /#HomeView -->
