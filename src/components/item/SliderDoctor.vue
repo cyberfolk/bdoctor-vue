@@ -28,13 +28,14 @@ export default defineComponent({
 <template>
     <h1 class="slider-title text-center color-dark my-1">I NOSTRI SPECIALISTI</h1>
     <Carousel :items-to-show="nCardsCarousel" :wrap-around="true" :autoplay="4000" :pauseAutoplayOnHover="true"
-        class="py-5">
+              class="py-5">
         <Slide v-for="(doctor, index) in state.doctorsSponsored" :key="index">
             <router-link :to="{ name: 'doctor', params: { slug: doctor.slug } }" class="text-decoration-none p-2">
                 <div class="carousel_item p-3 m-2">
                     <div class="card bg-light flex-column align-items-center border-0">
                         <div class=" img-fluid profile_circle mt-3">
-                            <img :src="state.getImagePath(doctor.photo)" alt="">
+                            <img v-if="doctor.photo != null" :src="state.getImagePath(doctor.photo)" alt="">
+                            <img v-else src="./../../assets/image/bdoctor.png" class="card-img-top" alt="...">
                         </div>
                         <div class="card-body d-flex flex-column">
                             <div class="text-center card-title">
@@ -93,7 +94,7 @@ export default defineComponent({
     transform: rotateY(-20deg) scale(0.9);
 }
 
-.carousel__slide--active ~ .carousel__slide {
+.carousel__slide--active~.carousel__slide {
     transform: rotateY(20deg) scale(0.9);
 }
 
